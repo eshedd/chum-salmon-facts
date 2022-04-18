@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chum Salmon Facts</title>
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+    <style>
+        .container {
+            position: relative;
+        }
+        #front {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin-top: 50px;
+        }
+        #back {
+            opacity: 0.5;
+        }
+        #wayback {
+            opacity: 0.2;
+        }
+        h1 {
+            font-size: 100px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+        #newfish1 {
+            display: none;
+        }
+        #newfish2 {
+            display: none;
+        }
+        #newfish3 {
+            display: none;
+        }
+    </style>
+    <script>
+        function search(ele) {
+            if(event.key === 'Enter') {
+                val = String(ele.value);
+                if(val === '') {
+                    document.getElementById("supportive").innerHTML = "Nope!";
+                    document.body.style.backgroundColor = 'white';
+                } else if(val == 'chum salmon' || val == 'chumsalmon' || val == 'ChumSalmon' || val == 'Chum Salmon') {
+                    document.getElementById("supportive").innerHTML = "Oh, not quite.";
+                    document.body.style.backgroundColor = 'black';
+                    document.getElementById("supportive").style.color = 'white';
+                } else if(val == 'new fish' || val == 'newfish') {
+                    if(document.getElementById('year').innerText == 2009) {
+                        document.getElementById('newfish1').style.display = 'block';
+                    } else if(document.getElementById('year').innerText == 2008) {
+                        document.getElementById('newfish2').style.display = 'block';
+                    } else if(document.getElementById('year').innerText == 2007) {
+                        document.getElementById('newfish3').style.display = 'block';
+                        document.getElementById('newfish1').style.display = 'none';
+                        document.getElementById('newfish2').style.display = 'none';
+                        fish = document.querySelectorAll('[id=fish]');
+                        for (let i = 0; i < fish.length; i++) {
+                            fish[i].style.display = 'none';
+                        }
+                    }
+                    document.getElementById('year').innerText -= 1;
+                }
+                    else {
+                    document.getElementById("supportive").innerHTML = "Yep!";
+                    document.body.style.backgroundColor = 'white';
+                }
+                
+            }
+            }
+    </script>
+  </head>
+  <body>
+	<script src="index.js"></script>
+    <div class="container" id="fish">
+        <div id="back">
+            <img src="img/wave.png">
+            <marquee behavior=scroll direction="left" scrollamount="12">
+                <img id='fish' style="width:200px;height:100px;" src="img/moving_salmon.png">
+            </marquee>
+            <marquee behavior=scroll direction="right" scrollamount="20">
+                <img id='fish' style="width:200px;height:100px;" src="img/chum_salmon.gif">
+            </marquee>
+            <marquee scrollamount="7">
+                <img id='fish' style="width:200px;height:100px;" src="img/another_salmon.gif">
+            </marquee>
+            <marquee scrollamount="1">
+                <img id='fish' style="width:200px;height:100px;" src="img/nemo.gif">
+            </marquee>
+            <marquee direction="right">
+                <img id='newfish1' src="img/newfish1.png">
+            </marquee>
+            <marquee direction="right">
+                <img id='newfish2' src="img/newfish2.png">
+            </marquee>
+        </div>
+        <div id="front">
+            <h1>Chum Salmon Facts</h1>
+            <ol>
+                <li>The chum salmon is the seventh most popular household pet in the United States of America. After the chum salmon are gerbils, hamster, and other rodents.</li>
+                <li>Question: What's the world's <b>LARGEST</b> fish?</li>
+                <li><input type="password" placeholder="Your Answer" id="input" onkeydown="search(this)"/></li><p id="supportive"></p>
+            </ol>
+            <h2>Chum Salmon Facts Webmaster</h2>
+            <img id="img" style="width:200px;height:300px;border: 5px solid #555;border-radius:10px;" 
+            src="img/unknown.png"/>
+            <p id="year">2009</p>
+            <img id="img" style="width:500px;height:300px;" src="img/dipndots.png"/>
+        </div>
+    </div>
+    <img id='newfish3' src="img/newfish3.png">
+    
+</body>
+</html>
